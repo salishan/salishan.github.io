@@ -1,0 +1,10 @@
+:root {
+	color-scheme: dark;
+	--background-color: #202028;
+	--foreground-color: #fcfcfc;
+	--accent-color: #f6e794;
+	--header-color: #afbde4;
+	--tips-color: #53667c;
+	--link-color: #c1ff5f;
+	--border-color: #333;
+}
