@@ -171,7 +171,6 @@ customElements.define(
 		}
 
 		#finishGame() {
-			this.#resetGame()
 			this.#show('form')
 		}
 
@@ -241,11 +240,12 @@ customElements.define(
 
 		#saveScore() {
 			const name = this.querySelector('#name')?.value.trim() || 'Unknown'
+
 			const entry = {
 				name,
-				matched: this.#data.points,
-				skipped: this.#data.skipped,
-				time: this.#data.seconds,
+				matched: this.#data.points ?? 0,
+				skipped: this.#data.skipped ?? 0,
+				time: this.#data.seconds ?? 0,
 				date: Date.now(),
 			}
 
@@ -328,6 +328,7 @@ customElements.define(
 			this.querySelector('#submit-score')?.addEventListener('click', () => {
 				this.#saveScore()
 				this.#loadScoreboard()
+				this.#resetGame()
 				this.#show('scoreboard')
 			})
 
