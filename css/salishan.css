@@ -192,10 +192,10 @@ salishan-game {
 		nn-btn {
 			width: 100%;
 		}
-		
+
 		input {
 			width: 100%;
-			padding: .5rem;
+			padding: 0.5rem;
 			text-transform: uppercase;
 			text-align: center;
 		}
@@ -228,6 +228,8 @@ salishan-game {
 		margin: auto;
 		gap: 0.5rem;
 		font-size: 1.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
 
 		.points {
 			color: #9aec4d;

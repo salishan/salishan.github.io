@@ -20,13 +20,14 @@ customElements.define(
 
 		#template = `
 	<salishan-navbar></salishan-navbar>
-    <nn-caja padding="1rem" max-width="900px">
+    <nn-caja padding="1rem" max-width="1000px">
       <main>
 
 			<section class="home flex-column" data-hidden="true">
 				<h1>Glyph Arena</h1>
 
-				<p>A fast-paced educational game where players match unique glyphs from Salishan and other Indigenous languages. Type the displayed glyph correctly to earn points, or press Escape to skip it. The game help players practice reading and typing complex characters while testing their knowledge and reflexes.</p>
+				<p>A fast-paced educational game where players match unique glyphs from Salishan and other Indigenous languages.</p>
+				<p>Type the displayed glyph correctly to earn points, or press Escape to skip it. The game help players practice reading and typing complex characters while testing their knowledge and reflexes.</p>
 
 				<nn-fila class="flex-column menu">
 					<nn-btn color="#3fe383ff" id="goto-game">
@@ -44,7 +45,10 @@ customElements.define(
 				<nn-fila class="flex-column menu">
 					<input id="name" type="text" placeholder="name" autocomplete="off" autocorrect="off" spellcheck="false" />
 					<nn-btn color="#3fe383ff" id="submit-score">
-						Submit
+						Submit Score
+					</nn-btn>
+					<nn-btn color="#3fe383ff" id="goto-score">
+						Dismiss Score
 					</nn-btn>
 				</nn-fila>
 			</section>
@@ -87,7 +91,7 @@ customElements.define(
 				
 				<div class="menu">
 					<nn-btn color="#3fe383ff" id="goto-home">
-						Go Home
+						Go Back Home
 					</nn-btn>
 				</div>
 			</section>
@@ -119,6 +123,15 @@ customElements.define(
 					<span>Seconds:</span>
 					<span class="time">0</span>
 				</div>
+
+				<div class="menu">
+					<nn-btn color="#3fe383ff" id="new-game">
+						Reset Challenge
+					</nn-btn>
+					<nn-btn color="#3fe383ff" id="goto-home">
+						Quit Challenge
+					</nn-btn>
+				</div>
 			</section>
       </main>
     </nn-caja>
@@ -133,15 +146,84 @@ customElements.define(
 			this.#data.input.value = ''
 		}
 
+		#show(section) {
+			const all = this.querySelectorAll('section')
+			all.forEach(s => (s.dataset.hidden = 'true'))
+
+			const target = this.querySelector(`section.${section}`)
+			if (target) target.dataset.hidden = 'false'
+		}
+
 		#finishGame() {
 			clearInterval(this.#data.interval)
+			this.#data.interval = null
+
 			this.#data.input.disabled = true
-			console.log('Game finished! Matched:', this.#data.points, 'Skipped:', this.#data.skipped)
+
+			this.#show('form')
+		}
+
+		#saveScore() {
+			const name = this.querySelector('#name').value.trim() || 'Unknown'
+
+			const entry = {
+				name,
+				matched: this.#data.points,
+				skipped: this.#data.skipped,
+				time: this.#data.seconds,
+				date: Date.now(),
+			}
+
+			const list = JSON.parse(localStorage.getItem('glyph-arena-scores') || '[]')
+			list.push(entry)
+			localStorage.setItem('glyph-arena-scores', JSON.stringify(list))
+		}
+
+		#loadScoreboard() {
+			const body = this.querySelector('.table-body')
+			body.innerHTML = ''
+
+			const list = JSON.parse(localStorage.getItem('glyph-arena-scores') || '[]')
+
+			list.sort((a, b) => {
+				// Sort by points DESC
+				if (b.matched !== a.matched) {
+					return b.matched - a.matched
+				}
+
+				// If points are equal, sort by time ASC
+				return a.time - b.time
+			})
+
+			if (list.length > 0) {
+				list.slice(0, 50).forEach(entry => {
+					const row = document.createElement('nn-fila')
+					row.setAttribute('break', 'sm')
+					row.setAttribute('gap', '.25rem')
+					row.setAttribute('role', 'row')
+
+					row.innerHTML = `
+							<nn-pilar size="100% / 4 - 0.25rem" role="cell">${entry.name}</nn-pilar>
+							<nn-pilar size="100% / 4 - 0.25rem" role="cell">${entry.matched}</nn-pilar>
+							<nn-pilar size="100% / 4 - 0.25rem" role="cell">${entry.skipped}</nn-pilar>
+							<nn-pilar size="100% / 4 - 0.25rem" role="cell">${entry.time}s</nn-pilar>
+					`
+
+					body.appendChild(row)
+				})
+			} else {
+				const row = document.createElement('nn-fila')
+				row.setAttribute('break', 'sm')
+				row.setAttribute('role', 'row')
+
+				row.innerHTML = `
+							<nn-pilar size="100%" role="cell">No entries</nn-pilar>
+					`
+				body.appendChild(row)
+			}
 		}
 
 		#handleKeydown = e => {
-			this.#startTimer()
-
 			if (this.#data.points + this.#data.skipped >= letters.length) {
 				this.#finishGame()
 				return
@@ -186,15 +268,58 @@ customElements.define(
 			}
 		}
 
+		#startNewGame() {
+			this.#data.currentLetter = 0
+			this.#data.points = 0
+			this.#data.skipped = 0
+			this.#data.seconds = 0
+
+			this.#data.input.disabled = false
+			this.#data.input.value = ''
+			this.#data.input.focus()
+
+			clearInterval(this.#data.interval)
+			this.#data.interval = null
+
+			this.#startTimer()
+
+			this.#updateDOM()
+		}
+
 		connectedCallback() {
 			this.innerHTML = this.#template
 
+			// Query elements
 			this.#data.input = this.querySelector('.card.input input')
 			this.#data.target = this.querySelector('.card.target .input')
 			this.#data.targetDescription = this.querySelector('.card.target .description')
 			this.#data.secondsElement = this.querySelector('.score .time')
 			this.#data.pointsElement = this.querySelector('.score .points')
 			this.#data.skippedElement = this.querySelector('.score .skipped')
+
+			// Navigation buttons
+			this.querySelector('#goto-game').addEventListener('click', () => {
+				this.#startNewGame()
+				this.#show('game')
+			})
+
+			this.querySelector('#goto-score').addEventListener('click', () => {
+				this.#loadScoreboard()
+				this.#show('scoreboard')
+			})
+
+			this.querySelector('#goto-home').addEventListener('click', () => {
+				this.#show('home')
+			})
+
+			this.querySelector('#submit-score').addEventListener('click', () => {
+				this.#saveScore()
+				this.#loadScoreboard()
+				this.#show('scoreboard')
+			})
+
+			// Start on homepage
+			this.#show('home')
 
 			document.addEventListener('keydown', this.#handleKeydown)
 		}
