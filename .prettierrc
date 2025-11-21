@@ -9,5 +9,5 @@
   "proseWrap": "always",
   "bracketSpacing": true,
   "html.format.wrapAttributes": "force-aligned",
-  "printWidth": 60
+  "printWidth": 120
 }
