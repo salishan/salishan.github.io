@@ -3,6 +3,7 @@
 @import url('./variables.css');
 @import url('./navbar.css');
 @import url('./footer.css');
+@import url('./table.css');
 
 @import url('./iconos.css');
 @import url('../fonts/Icomoon/Icomoon.css');
@@ -13,7 +14,7 @@
 * {
 	box-sizing: border-box;
 	/* font-family: "Fira Sans", sans-serif; */
-	  font-family: "Inter Tight", sans-serif;
+	font-family: 'Inter Tight', sans-serif;
 }
 
 html,
@@ -177,14 +178,36 @@ nn-dropdown {
 	}
 }
 
+[data-hidden='true'] {
+	display: none !important;
+}
+
 salishan-game {
 	--card-size: 450px;
 	--letter-size: calc(var(--card-size) / 1.7);
 	text-align: center;
 
+	.menu {
+		width: min(350px, 100%);
+		nn-btn {
+			width: 100%;
+		}
+		
+		input {
+			width: 100%;
+			padding: .5rem;
+			text-transform: uppercase;
+			text-align: center;
+		}
+	}
+
 	.game {
 		display: flex;
 		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.scoreboard {
 		gap: 3rem;
 	}
 
