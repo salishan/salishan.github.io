@@ -27,11 +27,8 @@ customElements.define(
   <main>
     <!-- HOME -->
     <section class="home" data-hidden="true">
-      <div>
-        <h1>Glyph Arena</h1>
-        <p>A fast-paced educational game where players match unique glyphs from Salishan and other Indigenous languages.</p>
-        <p>Type the displayed glyph correctly to earn points, or press Escape to skip it. The game helps players practice reading and typing complex characters while testing their knowledge and reflexes.</p>
-      </div>
+			<h1>Glyph Arena</h1>
+  
       <nn-fila class="menu">
         <nn-btn color="#3fe383ff" class="goto-game">Start Game</nn-btn>
         <nn-btn color="#3fe383ff" class="goto-score">Check Scoreboard</nn-btn>
@@ -160,7 +157,7 @@ customElements.define(
 
 		#startNewGame() {
 			this.#randomizedLetters()
-			
+
 			// Reset and initialize game state
 			this.#data.currentLetter = 0
 			this.#data.points = 0

@@ -21,14 +21,16 @@ salishan-game {
 		}
 	}
 
-	.home,
+	/* .home,
 	.game,
-    .form,
-	.scoreboard {
+	.form,
+	.scoreboard */
+    section {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
 		align-items: center;
+		width: 100%;
 	}
 
 	.cards {

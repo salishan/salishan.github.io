@@ -36,12 +36,13 @@ body {
 	}
 }
 
-.hidden {
+.sr-only {
 	display: none;
 }
 
-.sr-only {
-	display: none;
+.hidden,
+[data-hidden='true'] {
+	display: none !important;
 }
 
 p,
@@ -101,6 +102,9 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
+	min-height: calc(100vh - 248px);
+	align-items: center;
+	justify-content: center;
 }
 
 nn-pill {
@@ -175,8 +179,4 @@ nn-dropdown {
 		background-color: var(--nn-input-color);
 		box-shadow: 0 3px 0 var(--nn-input-color-active);
 	}
-}
-
-[data-hidden='true'] {
-	display: none !important;
 }
