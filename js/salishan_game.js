@@ -81,10 +81,6 @@ const letters = [
 		label: 'ɩ',
 		description: 'letter iota',
 	},
-	// {
-	// 	label: 'ʼ',
-	// 	description: 'glottalization',
-	// },
 	{
 		label: 'ƛ',
 		description: 'letter lambda with stroke',
@@ -136,13 +132,14 @@ customElements.define(
 			</div>
 		</section>
 		<div class="score">
-			<p class="points">
+			<span>Points:</span>	
+			<span class="points">
 				${this.#data.points || 0}
-			</p>
-			<span>/</span>
-			<p class="time">
+			</span>
+			<span>Seconds:</span>
+			<span class="time">
 				${this.#data.seconds || 0}
-			</p>
+			</span>
 		</div>
       </main>
     </nn-caja>
