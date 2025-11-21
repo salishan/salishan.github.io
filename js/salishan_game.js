@@ -15,6 +15,7 @@ customElements.define(
 		#data = {
 			currentLetter: 0,
 			points: undefined,
+			skipped: undefined,
 			seconds: undefined,
 			input: undefined,
 			target: undefined,
@@ -27,6 +28,8 @@ customElements.define(
 
     <nn-caja padding="1rem">
       <main>
+		<h1>Match the letters</h1>
+
         <section class="game">
 			<div class="card input">
 				<input type="text" class="input" placeholder="-" />
@@ -38,13 +41,21 @@ customElements.define(
 			</div>
 		</section>
 		<div class="score">
-			<span>Points:</span>	
+			<span>Matched:</span>	
 			<span class="points">
 				${this.#data.points || 0}
 			</span>
-			<span>
-			/ ${keyboard.length},
+
+			<span>Skipped:</span>	
+			<span class="skipped">
+				${this.#data.skipped || 0}
 			</span>
+
+			<span>Total:</span>	
+			<span class="total">
+				${keyboard.length}
+			</span>
+
 			<span>Seconds:</span>
 			<span class="time">
 				${this.#data.seconds || 0}
@@ -71,7 +82,7 @@ customElements.define(
 
 				this.#data.points.innerHTML = ++this.#data.points.innerHTML
 
-				if (++this.#data.points.innerHTML >= letters.length) {
+				if (this.#data.points.innerHTML >= letters.length) {
 					clearInterval(this.#data.interval)
 				}
 			}
@@ -93,6 +104,7 @@ customElements.define(
 			this.#data.targetDescription = this.querySelector('.card.target .description')
 			this.#data.seconds = this.querySelector('.score .time')
 			this.#data.points = this.querySelector('.score .points')
+			this.#data.skipped = this.querySelector('.score .skipped')
 
 			this.#data.input.addEventListener('input', this.#matchInputandTarget.bind(this))
 		}

@@ -206,6 +206,9 @@ salishan-game {
 		.points {
 			color: #ecc84d;
 		}
+		.skipped {
+			color: #eb6565;
+		}
 	}
 
 	.card {
