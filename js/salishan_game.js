@@ -22,42 +22,38 @@ customElements.define(
 	<salishan-navbar></salishan-navbar>
     <nn-caja padding="1rem">
       <main>
-
 			<section class="home">
 				<h1>Glyph Arena</h1>
 			</section>
 
 			<section class="game">
-			<div class="content">
-				<h2>Match the glyphs</h2>
-				<p class="hint">(press <strong>esc</strong> to skip a letter)</p>
-			</div>
+				<div class="content">
+					<h2>Match the glyphs</h2>
+					<p class="hint">(press <strong>enter</strong> to submit a glyph or <strong>esc</strong> to skip it)</p>
+				</div>
 
-			<div class="cards">
+				<div class="cards">
+					<div class="card input">
+						<input type="text" class="input" placeholder="-" autofocus  autocomplete="off" autocorrect="off" spellcheck="false" />
+						<p class="description"></p>
+					</div>
+					<div class="card target">
+						<p class="input">${letters[0].label}</p>
+						<p class="description">${letters[0].description}</p>
+					</div>
+				</div>
 
-			<div class="card input">
-				<input type="text" class="input" placeholder="-" autofocus />
-				<p class="description"></p>
-			</div>
-			<div class="card target">
-				<p class="input">${letters[0].label}</p>
-				<p class="description">${letters[0].description}</p>
-			</div>
-
-			</div>
-
-			<div class="score">
-				<span>Matched:</span>	
-				<span class="points">0</span>
-				<span>Skipped:</span>	
-				<span class="skipped">0</span>
-				<span>Total:</span>	
-				<span class="total">${letters.length}</span>
-				<span>Seconds:</span>
-				<span class="time">0</span>
-			</div>
-
-		</section>
+				<div class="score">
+					<span>Matched:</span>	
+					<span class="points">0</span>
+					<span>Failed/Skipped:</span>	
+					<span class="skipped">0</span>
+					<span>Total:</span>	
+					<span class="total">${letters.length}</span>
+					<span>Seconds:</span>
+					<span class="time">0</span>
+				</div>
+			</section>
       </main>
     </nn-caja>
     <salishan-footer></salishan-footer>
@@ -68,38 +64,45 @@ customElements.define(
 			this.#data.skippedElement.innerHTML = this.#data.skipped
 			this.#data.target.innerHTML = letters[this.#data.currentLetter]?.label || ''
 			this.#data.targetDescription.innerHTML = letters[this.#data.currentLetter]?.description || ''
-		}
-
-		#matchInputandTarget(e) {
-			this.#startTimer()
-
-			const hasMatch = normalize(e.target.value) === normalize(this.#data.target.innerHTML)
-
-			if (hasMatch) {
-				this.#data.points++
-				this.#data.currentLetter++
-				e.target.value = ''
-				this.#updateDOM()
-
-				if (this.#data.points + this.#data.skipped >= letters.length) this.#finishGame()
-			}
+			this.#data.input.value = ''
 		}
 
 		#finishGame() {
-			console.log('scored')
 			clearInterval(this.#data.interval)
+			this.#data.input.disabled = true
+			console.log('Game finished! Matched:', this.#data.points, 'Skipped:', this.#data.skipped)
 		}
 
 		#handleKeydown = e => {
 			this.#startTimer()
 
+			if (this.#data.points + this.#data.skipped >= letters.length) {
+				this.#finishGame()
+				return
+			}
+
 			if (e.key === 'Escape') {
-				if (this.#data.points + this.#data.skipped >= letters.length) {
-					this.#finishGame()
+				this.#data.skipped++
+				this.#data.currentLetter++
+				this.#updateDOM()
+				return
+			}
+
+			if (e.key === 'Enter') {
+				const inputValue = normalize(this.#data.input.value)
+				const targetValue = normalize(letters[this.#data.currentLetter]?.label || '')
+
+				if (inputValue === targetValue) {
+					this.#data.points++
 				} else {
 					this.#data.skipped++
-					this.#data.currentLetter++
-					this.#updateDOM()
+				}
+
+				this.#data.currentLetter++
+				this.#updateDOM()
+
+				if (this.#data.points + this.#data.skipped >= letters.length) {
+					this.#finishGame()
 				}
 			}
 		}
@@ -123,7 +126,6 @@ customElements.define(
 			this.#data.pointsElement = this.querySelector('.score .points')
 			this.#data.skippedElement = this.querySelector('.score .skipped')
 
-			this.#data.input.addEventListener('input', this.#matchInputandTarget.bind(this))
 			document.addEventListener('keydown', this.#handleKeydown)
 		}
 
