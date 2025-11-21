@@ -8,14 +8,17 @@ customElements.define(
 	getPrefix('game'),
 	class extends HTMLElement {
 		#data = {
-			currentLetter: 0,
-			points: 0,
-			skipped: 0,
-			seconds: 0,
-			input: null,
-			target: null,
-			targetDescription: null,
-			interval: null,
+			currentLetter: undefined,
+			points: undefined,
+			skipped: undefined,
+			seconds: undefined,
+			input: undefined,
+			target: undefined,
+			targetDescription: undefined,
+			secondsElement: undefined,
+			pointsElement: undefined,
+			skippedElement: undefined,
+			interval: undefined,
 		}
 
 		#template = `
@@ -159,12 +162,20 @@ customElements.define(
 			letters.sort(() => 0.5 - Math.random())
 
 			clearInterval(this.#data.interval)
-			this.#data.interval = null
-			this.#data.input.disabled = true
+			this.#data.interval = undefined
 
-			this.#data.secondsElement.innerHTML = 0
-			this.#data.pointsElement.innerHTML = 0
-			this.#data.skippedElement.innerHTML = 0
+			this.#data.currentLetter = undefined
+			this.#data.points = undefined
+			this.#data.skipped = undefined
+			this.#data.seconds = undefined
+
+			if (this.#data.input) this.#data.input.disabled = true
+			if (this.#data.secondsElement) this.#data.secondsElement.innerHTML = 0
+			if (this.#data.pointsElement) this.#data.pointsElement.innerHTML = 0
+			if (this.#data.skippedElement) this.#data.skippedElement.innerHTML = 0
+			if (this.#data.target) this.#data.target.innerHTML = ''
+			if (this.#data.targetDescription) this.#data.targetDescription.innerHTML = ''
+			if (this.#data.input) this.#data.input.value = ''
 		}
 
 		#finishGame() {
@@ -283,16 +294,19 @@ customElements.define(
 			this.#data.skipped = 0
 			this.#data.seconds = 0
 
-			this.#data.input.disabled = false
-			this.#data.input.value = ''
-			this.#data.input.focus()
+			if (this.#data.input) {
+				this.#data.input.disabled = false
+				this.#data.input.value = ''
+				this.#data.input.focus()
+			}
 
 			clearInterval(this.#data.interval)
-			this.#data.interval = null
+			this.#data.interval = undefined
 
-			this.#startTimer()
+			if (this.#data.secondsElement) this.#data.secondsElement.innerHTML = 0
 
 			this.#updateDOM()
+			this.#startTimer()
 		}
 
 		connectedCallback() {
