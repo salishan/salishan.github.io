@@ -53,12 +53,12 @@ salishan-game {
 		flex-wrap: wrap;
 		justify-content: center;
 
-		.points {
+		/* .points {
 			color: #9aec4d;
 		}
 		.skipped {
 			color: #eb6565;
-		}
+		} */
 	}
 
 	.card {

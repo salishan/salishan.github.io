@@ -81,10 +81,25 @@ customElements.define(
       </div>
 
       <div class="score">
-        <span>Matched:</span><span class="points">0</span>
-        <span>Failed/Skipped:</span><span class="skipped">0</span>
-        <span>Total:</span><span class="total">${letters.length}</span>
-        <span>Seconds:</span><span class="time">0</span>
+
+				<nn-pill color="rgba(65, 148, 35, 1)">
+					<nn-icono class="check"></nn-icono>
+					<span class="points">0</span>
+        </nn-pill>
+				
+				<nn-pill color="rgba(231, 68, 128, 1)">
+					<nn-icono class="times"></nn-icono>
+					<span class="skipped nn-label">0</span>
+        </nn-pill>
+        
+				<nn-pill color="rgba(47, 66, 88, 1)">
+					<span class="current-total">0 / ${letters.length}</span>
+				</nn-pill>
+
+				<nn-pill color="rgba(47, 66, 88, 1)">
+					<nn-icono class="clock-o"></nn-icono>
+					<span class="time">0</span>
+				</nn-pill>
       </div>
 
       <div class="menu">
@@ -98,7 +113,6 @@ customElements.define(
 `
 
 		#updateDOM() {
-			// Always update the game UI
 			if (!this.#data.input) return
 
 			this.#data.pointsElement.innerHTML = this.#data.points
@@ -107,6 +121,12 @@ customElements.define(
 			this.#data.target.innerHTML = letters[this.#data.currentLetter]?.label || ''
 			this.#data.targetDescription.innerHTML = letters[this.#data.currentLetter]?.description || ''
 			this.#data.input.value = ''
+
+			// Update current / total
+			const currentTotal = this.querySelector('.current-total')
+			if (currentTotal) {
+				currentTotal.innerHTML = `${this.#data.currentLetter + 1} / ${letters.length}`
+			}
 		}
 
 		#show(section) {

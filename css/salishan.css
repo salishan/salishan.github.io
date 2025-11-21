@@ -108,8 +108,8 @@ main {
 }
 
 nn-pill {
-	--nn-pill-text-color: #fff;
-	font-size: 12px;
+	/* --nn-pill-text-color: #fff; */
+	font-size: 1rem;
 }
 
 nn-dropdown {
