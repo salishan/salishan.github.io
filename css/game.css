@@ -1,0 +1,111 @@
+salishan-game {
+	--card-size: 450px;
+	--letter-size: calc(var(--card-size) / 1.7);
+	text-align: center;
+
+	.menu {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		width: min(350px, 100%);
+
+		nn-btn {
+			width: 100%;
+		}
+
+		input {
+			width: 100%;
+			padding: 0.5rem;
+			text-transform: uppercase;
+			text-align: center;
+		}
+	}
+
+	.home,
+	.game,
+	.scoreboard {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	.cards {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.hint {
+		color: #d3d3d3;
+	}
+
+	.score {
+		display: flex;
+		margin: auto;
+		gap: 0.5rem;
+		font-size: 1.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		.points {
+			color: #9aec4d;
+		}
+		.skipped {
+			color: #eb6565;
+		}
+	}
+
+	.card {
+		width: var(--card-size);
+		height: var(--card-size);
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		background-color: #3d3d60;
+		color: var(--foreground-color);
+		padding: 1rem;
+		justify-content: space-around;
+
+		.input {
+			font-size: var(--letter-size);
+			line-height: 1;
+			padding: 0;
+			background-color: transparent;
+			border: none;
+			outline: none;
+			text-align: inherit;
+		}
+
+		.description {
+			text-transform: uppercase;
+		}
+
+		&.input {
+			background-color: #fac720;
+
+			&,
+			.input {
+				color: #252740;
+			}
+		}
+
+		&.target {
+			user-select: none;
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	salishan-game {
+		--card-size: 350px;
+	}
+}
+
+@media (max-width: 750px) {
+	salishan-game {
+		--card-size: 250px;
+	}
+}

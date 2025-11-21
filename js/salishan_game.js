@@ -1,7 +1,7 @@
 import { getPrefix } from './head.js'
 import keyboard from './keyboard.js'
 
-const letters = keyboard.sort(() => 0.5 - Math.random())
+const letters = keyboard
 const normalize = str => str.normalize('NFC')
 
 customElements.define(
@@ -23,37 +23,38 @@ customElements.define(
     <nn-caja padding="1rem" max-width="1000px">
       <main>
 
-			<section class="home flex-column" data-hidden="true">
-				<h1>Glyph Arena</h1>
+			<section class="home" data-hidden="true">
+				<div>
+					<h1>Glyph Arena</h1>
+					<p>A fast-paced educational game where players match unique glyphs from Salishan and other Indigenous languages.</p>
+					<p>Type the displayed glyph correctly to earn points, or press Escape to skip it. The game help players practice reading and typing complex characters while testing their knowledge and reflexes.</p>
+				</div>
 
-				<p>A fast-paced educational game where players match unique glyphs from Salishan and other Indigenous languages.</p>
-				<p>Type the displayed glyph correctly to earn points, or press Escape to skip it. The game help players practice reading and typing complex characters while testing their knowledge and reflexes.</p>
-
-				<nn-fila class="flex-column menu">
-					<nn-btn color="#3fe383ff" id="goto-game">
+				<nn-fila class="menu">
+					<nn-btn color="#3fe383ff" class="goto-game">
 						Start Game
 					</nn-btn>
-					<nn-btn color="#3fe383ff" id="goto-score">
+					<nn-btn color="#3fe383ff" class="goto-score">
 						Check Scoreboard
 					</nn-btn>
 				</nn-fila>
 			</section>
 
-			<section class="form flex-column" data-hidden="false">
+			<section class="form" data-hidden="false">
 				<h2>Submit your score</h2>
 
-				<nn-fila class="flex-column menu">
+				<nn-fila class="menu">
 					<input id="name" type="text" placeholder="name" autocomplete="off" autocorrect="off" spellcheck="false" />
 					<nn-btn color="#3fe383ff" id="submit-score">
 						Submit Score
 					</nn-btn>
-					<nn-btn color="#3fe383ff" id="goto-score">
+					<nn-btn color="#3fe383ff" class="goto-score">
 						Dismiss Score
 					</nn-btn>
 				</nn-fila>
 			</section>
 
-			<section class="scoreboard flex-column" data-hidden="true">
+			<section class="scoreboard" data-hidden="true">
 				<h2>Scoreboard</h2>
 
 				<div class="table" role="table">
@@ -90,7 +91,7 @@ customElements.define(
 				</div>
 				
 				<div class="menu">
-					<nn-btn color="#3fe383ff" id="goto-home">
+					<nn-btn color="#3fe383ff" class="goto-home">
 						Go Back Home
 					</nn-btn>
 				</div>
@@ -125,10 +126,10 @@ customElements.define(
 				</div>
 
 				<div class="menu">
-					<nn-btn color="#3fe383ff" id="new-game">
+					<nn-btn color="#3fe383ff" class="new-game">
 						Reset Challenge
 					</nn-btn>
-					<nn-btn color="#3fe383ff" id="goto-home">
+					<nn-btn color="#3fe383ff" class="goto-home">
 						Quit Challenge
 					</nn-btn>
 				</div>
@@ -154,12 +155,20 @@ customElements.define(
 			if (target) target.dataset.hidden = 'false'
 		}
 
-		#finishGame() {
+		#resetGame() {
+			letters.sort(() => 0.5 - Math.random())
+
 			clearInterval(this.#data.interval)
 			this.#data.interval = null
-
 			this.#data.input.disabled = true
 
+			this.#data.secondsElement.innerHTML = 0
+			this.#data.pointsElement.innerHTML = 0
+			this.#data.skippedElement.innerHTML = 0
+		}
+
+		#finishGame() {
+			this.#resetGame()
 			this.#show('form')
 		}
 
@@ -297,20 +306,37 @@ customElements.define(
 			this.#data.pointsElement = this.querySelector('.score .points')
 			this.#data.skippedElement = this.querySelector('.score .skipped')
 
-			// Navigation buttons
-			this.querySelector('#goto-game').addEventListener('click', () => {
-				this.#startNewGame()
-				this.#show('game')
-			})
+			// Go to Game
+			this.querySelectorAll('.goto-game').forEach(btn =>
+				btn.addEventListener('click', () => {
+					this.#startNewGame()
+					this.#show('game')
+				})
+			)
 
-			this.querySelector('#goto-score').addEventListener('click', () => {
-				this.#loadScoreboard()
-				this.#show('scoreboard')
-			})
+			// Go to Scoreboard
+			this.querySelectorAll('.goto-score').forEach(btn =>
+				btn.addEventListener('click', () => {
+					this.#loadScoreboard()
+					this.#show('scoreboard')
+				})
+			)
 
-			this.querySelector('#goto-home').addEventListener('click', () => {
-				this.#show('home')
-			})
+			// Go Home
+			this.querySelectorAll('.goto-home').forEach(btn =>
+				btn.addEventListener('click', () => {
+					this.#resetGame()
+					this.#show('home')
+				})
+			)
+
+			// Reset Challenge
+			this.querySelectorAll('.new-game').forEach(btn =>
+				btn.addEventListener('click', () => {
+					this.#resetGame()
+					this.#startNewGame()
+				})
+			)
 
 			this.querySelector('#submit-score').addEventListener('click', () => {
 				this.#saveScore()
