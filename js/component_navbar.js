@@ -22,16 +22,44 @@ customElements.define(
           <ul>
             <li>
               <a target="_self" href="/" class="logo">
-                <img
-                  width="112"
-                  height="35"
-                  src="../img/lomdb.svg"
-                  alt="lomdb logo"
-                />
+                Salishan Keyboard
               </a>
             </li>
 
+			<li class="searchbar-area">
+              <search>
+                <nn-fila class="search-bar">
+                  <nn-pilar size="35px">
+                    <nn-btn class="search-btn" aria-label="filter button">
+                      <nn-icono class="filter"></nn-icono>
+                    </nn-btn>
+                  </nn-pilar>
+                  <nn-pilar size="100% - 35px * 3">
+                    <input type="text" autocomplete="off" autofocus aria-label="search bar input" />
+                  </nn-pilar>
+                  <nn-pilar size="35px">
+                    <nn-btn class="clear-btn" aria-label="clear search bar button">
+                      <nn-icono class="times"></nn-icono>
+                    </nn-btn>
+                  </nn-pilar>
+                  <nn-pilar size="35px">
+                    <nn-btn class="share-btn" aria-label="share filterd table button">
+                      <nn-icono class="share-alt"></nn-icono>
+                    </nn-btn>
+                  </nn-pilar>
+                </nn-fila>
+              </search>
+            </li>
+
             <li>
+              <a target="_self" href="/">Home</a>
+            </li>
+
+            <li>
+              <a target="_self" href="game.html">Game</a>
+            </li>
+
+			<li>
               <nn-dropdown label="Players">
                 <a target="_self" href="game.html">Game</a>
               </nn-dropdown>

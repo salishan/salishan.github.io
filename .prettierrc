@@ -8,6 +8,5 @@
   "arrowParens": "avoid",
   "proseWrap": "always",
   "bracketSpacing": true,
-  "html.format.wrapAttributes": "force-aligned",
-  "printWidth": 120
+  "html.format.wrapAttributes": "force-aligned"
 }
