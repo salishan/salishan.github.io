@@ -69,8 +69,6 @@ customElements.define(
             
           </ul>
         </nav>
-
-        <div class="filters"></div>
       </div>
 
       <ul class="notifications">
@@ -78,24 +76,10 @@ customElements.define(
     </nn-caja>
     `
 
-		#filter_keys = [
-			// 'staff',
-		]
-
 		#data = {
 			theme: 'dark',
 			currentRoute,
 			filterBy: 'all',
-		}
-
-		#createFilters() {
-			const buttons = this.#filter_keys
-				.map(
-					item =>
-						`<button class="${item}">${item.toUpperCase()}</button>`
-				)
-				.join('')
-			return buttons
 		}
 
 		setTheme(theme) {
@@ -126,7 +110,6 @@ customElements.define(
 		}
 
 		#generateListeners() {
-			const filterContainer = this.querySelector('.filters')
 			const searchBar = this.querySelector(
 				'.search-bar input'
 			)
@@ -144,26 +127,6 @@ customElements.define(
 
 			if (filters) {
 				filterBy = filters
-			}
-
-			if (filterContainer) {
-				filterContainer.addEventListener('click', e => {
-					const button = e.target.closest('button')
-					if (!button || !filterContainer.contains(button))
-						return
-
-					const lang = button.classList[0]
-					// searchBar.value
-
-					searchBar.dispatchEvent(
-						new Event('input', { bubbles: true })
-					)
-
-					this.querySelectorAll('.filters button').forEach(
-						btn => btn.classList.remove('active')
-					)
-					button.classList.add('active')
-				})
 			}
 
 			if (searchBar) {
@@ -276,21 +239,6 @@ customElements.define(
 				this.hasAttribute('nosearchbar')
 			if (noSearchbar) {
 				this.querySelector('.searchbar-area').innerHTML = ''
-			}
-
-			const noFilters =
-				this.hasAttribute('no-filters') ||
-				this.hasAttribute('nofilters')
-			if (noFilters) {
-				this.querySelector('.filters').remove()
-			} else {
-				const filters =
-					this.getAttribute('filters')?.split(',')
-				this.#filter_keys = filters
-					? filters
-					: this.#filter_keys
-				const container = this.querySelector('.filters')
-				container.innerHTML = this.#createFilters()
 			}
 
 			this.#generateListeners()
