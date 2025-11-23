@@ -22,7 +22,7 @@ customElements.define(
 		}
 
 		#template = `
-<salishan-navbar></salishan-navbar>
+<salishan-navbar no-searchbar></salishan-navbar>
 <nn-caja padding="1rem" max-width="1000px">
   <main>
     <!-- HOME -->

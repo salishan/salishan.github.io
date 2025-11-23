@@ -59,9 +59,11 @@ customElements.define(
               <a target="_self" href="game.html">Game</a>
             </li>
 
-			<li>
-              <nn-dropdown label="Players">
-                <a target="_self" href="game.html">Game</a>
+			<li class="hidden">
+              <nn-dropdown label="Developer Tools">
+                <a target="_self" href="changelog.html">Changelog</a>
+                <a target="_self" href="design.html">Design</a>
+                <a target="_self" href="design.html">About Salishan Keyboard</a>
               </nn-dropdown>
             </li>
             

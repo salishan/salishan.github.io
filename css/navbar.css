@@ -56,53 +56,10 @@ salishan-navbar {
   }
 }
 
-.filters {
-  width: 100%;
-  background: var(--background-color);
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 2px;
-
-  button,
-  div {
-    &.active {
-      outline: 2px solid #fff;
-    }
-  }
-
-  button {
-    &:hover {
-      filter: brightness(1.25);
-      cursor: pointer;
-    }
-  }
-
-  div {
-    &:hover,
-    &.active {
-      cursor: not-allowed;
-    }
-  }
-
-  button,
-  div {
-    color: #fff;
-    font-size: 14px;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    padding: 1rem;
-    border: 0;
-    font-weight: bold;
-    transition: opacity ease 200ms;
-    text-align: center;
-    border-radius: 10px;
-
-    &#all {
-      background: #5a5a5a;
-      color: #fff;
-    }
-  }
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-color);
 }
 
 .notifications {
