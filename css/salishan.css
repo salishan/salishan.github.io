@@ -217,7 +217,6 @@ salishan-keyboard {
 	.key {
 		width: 100px;
 		height: 100px;
-		position: relative;
 		display: flex;
 		font-size: 1.5rem;
 		flex-direction: column-reverse;
@@ -229,6 +228,7 @@ salishan-keyboard {
 		transition: transform 100ms ease-in-out, box-shadow 100ms ease-in-out;
 
 		&:hover {
+			z-index: 1;
 			box-shadow: #43857a 1px 1px 1px;
 			transform: translate(3px, 3px);
 		}
@@ -244,7 +244,6 @@ salishan-keyboard {
 			&:nth-child(3),
 			&:nth-child(4) {
 				color: #252740;
-				/* font-weight: bold; */
 			}
 		}
 	}

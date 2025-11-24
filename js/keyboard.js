@@ -20,7 +20,7 @@ export default [
 	// =========================
 	{ label: 'Ⱥ', description: 'letter capital A with stroke' },
 	{ label: 'ɬ', description: 'letter l with belt' },
-	{ label: 'ɫ', description: 'letter l with tilde?' },
+	{ label: 'ɫ', description: 'letter l with tilde' },
 	{ label: 'ʃ', description: 'letter esh' },
 	{ label: 'ɢ', description: 'letter small capital G' },
 	{ label: 'ə', description: 'schwa' },

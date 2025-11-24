@@ -8,67 +8,81 @@ customElements.define(
 		}
 
 		#keyboard = [
+			// =========================
 			// Number row
-			['`', '~'], // TLDE
-			['1', '!'], // AE01
-			['2', '@'], // AE02
-			['3', '#'], // AE03
-			['4', '$'], // AE04
-			['5', '%'], // AE05
-			['6', '^'], // AE06
-			['7', '&'], // AE07
-			['8', '*'], // AE08
-			['9', '(', '‿'], // AE09
-			['0', ')', '·'], // AE10
-			['-', '_'], // AE11
-			['=', '+'], // AE12
+			// =========================
+			{ tooltip: null, chars: ['`', '~'] }, // TLDE
+			{ tooltip: null, chars: ['1', '!'] }, // AE01
+			{ tooltip: null, chars: ['2', '@'] }, // AE02
+			{ tooltip: null, chars: ['3', '#'] }, // AE03
+			{ tooltip: null, chars: ['4', '$'] }, // AE04
+			{ tooltip: null, chars: ['5', '%'] }, // AE05
+			{ tooltip: null, chars: ['6', '^'] }, // AE06
+			{ tooltip: null, chars: ['7', '&'] }, // AE07
+			{ tooltip: null, chars: ['8', '*'] }, // AE08
+			{ tooltip: 'combining short stroke overlay', chars: ['9', '(', '‿'] }, // AE09 (‿)
+			{ tooltip: 'middle dot', chars: ['0', ')', '·'] }, // AE10 (·)
+			{ tooltip: null, chars: ['-', '_'] }, // AE11
+			{ tooltip: null, chars: ['=', '+'] }, // AE12
 
+			// =========================
 			// Top letter row
-			['q', 'Q', 'θ'], // AD01
-			['w', 'W', 'ʷ'], // AD02
-			['e', 'E', 'ɛ'], // AD03
-			['r', 'R', 'χ'], // AD04
-			['t', 'T', 'Ŧ'], // AD05
-			['y', 'Y', 'ɣ'], // AD06
-			['u', 'U', 'ʕ'], // AD07
-			['i', 'I', 'ɨ'], // AD08
-			['o', 'O', 'ʔ', 'Ɂ'], // AD09
-			['p', 'P', 'ʧ'], // AD10
-			['[', '{', 'ŋ'], // AD11
-			[']', '}'], // AD12
+			// =========================
+			{ tooltip: 'letter theta', chars: ['q', 'Q', 'θ'] }, // AD01
+			{ tooltip: 'labialization', chars: ['w', 'W', 'ʷ'] }, // AD02
+			{ tooltip: 'letter epsilon', chars: ['e', 'E', 'ɛ'] }, // AD03
+			{ tooltip: 'letter chi', chars: ['r', 'R', 'χ'] }, // AD04
+			{ tooltip: 'letter capital T with stroke', chars: ['t', 'T', 'Ŧ'] }, // AD05
+			{ tooltip: 'letter gamma', chars: ['y', 'Y', 'ɣ'] }, // AD06
+			{ tooltip: 'reverse glottal stop', chars: ['u', 'U', 'ʕ'] }, // AD07
+			{ tooltip: 'letter i with stroke', chars: ['i', 'I', 'ɨ'] }, // AD08
+			{ tooltip: 'glottal stop', chars: ['o', 'O', 'ʔ', 'Ɂ'] }, // AD09 (primary: ʔ)
+			{ tooltip: 'letter tf', chars: ['p', 'P', 'ʧ'] }, // AD10
+			{ tooltip: 'eng letter', chars: ['[', '{', 'ŋ'] }, // AD11
+			{ tooltip: null, chars: [']', '}'] }, // AD12
 
+			// =========================
 			// Home row
-			['a', 'A', 'Ⱥ'], // AC01
-			['s', 'S', 'ɬ'], // AC02
-			['d', 'D', 'ɫ'], // AC03
-			['f', 'F', 'ʃ'], // AC04
-			['g', 'G', 'ɢ'], // AC05
-			['h', 'H', 'ə'], // AC06
-			['j', 'J', 'ɩ'], // AC07
-			['k', 'K', 'ɯ'], // AC08
-			['l', 'L', 'ƛ'], // AC09
-			[';', ':', 'ʦ'], // AC10
-			["'", '"', 'ʼ'], // AC11
+			// =========================
+			{ tooltip: 'letter capital A with stroke', chars: ['a', 'A', 'Ⱥ'] }, // AC01
+			{ tooltip: 'letter l with belt', chars: ['s', 'S', 'ɬ'] }, // AC02
+			{ tooltip: 'letter l with tilde', chars: ['d', 'D', 'ɫ'] }, // AC03
+			{ tooltip: 'letter esh', chars: ['f', 'F', 'ʃ'] }, // AC04
+			{ tooltip: 'letter small capital G', chars: ['g', 'G', 'ɢ'] }, // AC05
+			{ tooltip: 'schwa', chars: ['h', 'H', 'ə'] }, // AC06
+			{ tooltip: 'letter iota', chars: ['j', 'J', 'ɩ'] }, // AC07
+			{ tooltip: 'letter turned m', chars: ['k', 'K', 'ɯ'] }, // AC08
+			{ tooltip: 'lambda with stroke', chars: ['l', 'L', 'ƛ'] }, // AC09
+			{ tooltip: 'letter ts', chars: [';', ':', 'ʦ'] }, // AC10
+			{
+				tooltip: 'modifier apostrophe (glottalization)',
+				chars: ["'", '"', 'ʼ'],
+			}, // AC11
 
-			['\\', '|'], // BKSL
+			{ tooltip: null, chars: ['\\', '|'] }, // BKSL
 
-			// Bottom row
-			['z', 'Z', '́'], // AB01
-			['x', 'X', '̓'], // AB02
-			['c', 'C', '̄'], // AB03
-			['v', 'V', '̃'], // AB04
-			['b', 'B', '̌'], // AB05
-			['n', 'N', '̵'], // AB06
-			['m', 'M', '̴'], // AB07
-			[',', '<', '̣'], // AB08
-			['.', '>', '̞'], // AB09
-			['/', '?', '̱'], // AB10
+			// =========================
+			// Bottom row (combining marks)
+			// =========================
+			{ tooltip: 'acute accent', chars: ['z', 'Z', '́'] }, // AB01
+			{
+				tooltip: 'combining comma above (glottalization)',
+				chars: ['x', 'X', '̓'],
+			}, // AB02
+			{ tooltip: 'combining macron', chars: ['c', 'C', '̄'] }, // AB03
+			{ tooltip: 'combining tilde', chars: ['v', 'V', '̃'] }, // AB04
+			{ tooltip: 'combining caron', chars: ['b', 'B', '̌'] }, // AB05
+			{ tooltip: 'combining short stroke overlay', chars: ['n', 'N', '̵'] }, // AB06
+			{ tooltip: 'combining tilde overlay', chars: ['m', 'M', '̴'] }, // AB07
+			{ tooltip: 'combining dot below', chars: [',', '<', '̣'] }, // AB08
+			{ tooltip: 'combining reversed breve below', chars: ['.', '>', '̞'] }, // AB09
+			{ tooltip: 'combining macron below', chars: ['/', '?', '̱'] }, // AB10
 		]
 
 		#generateKeys() {
 			return this.#keyboard
 				.map(key => {
-					const chars = key
+					const chars = key.chars
 						.map(char => {
 							return `
 						<span class="char">
@@ -79,10 +93,10 @@ customElements.define(
 						.join('')
 
 					return `
-					<div class="key" data-tooltip="Hola">
-						${chars}
-					</div>
-				`
+				<div class="key" ${key.tooltip ? `data-tooltip="${key.tooltip}"` : ''}>
+					${chars}
+				</div>
+			`
 				})
 				.join('')
 		}
