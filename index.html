@@ -121,6 +121,7 @@
 		<script type="module">
 			import './js/head.js'
 			import './js/component_cinematic.js'
+			import './js/component_keyboard.js'
 		</script>
 	</head>
 
@@ -130,9 +131,25 @@
 		<salishan-cinematic> </salishan-cinematic>
 
 		<main>
-			<section class="intro"></section>
+			<section class="intro">
+				<nn-caja
+					max-width="1200px"
+					padding="1rem"
+				>
+					<h1>Salishan Keyboard Layout</h1>
+
+					<p>
+						Currently supporting Salishan and neighboring Indigenous languages
+						of the Pacific Northwest, featuring dead keys, combining
+						diacritics, and efficient input for glottalized, ejective, and
+						lateral consonants.
+					</p>
+
+					<salishan-keyboard> </salishan-keyboard>
+				</nn-caja>
+			</section>
 		</main>
 
-        <salishan-footer></salishan-footer>
+		<salishan-footer></salishan-footer>
 	</body>
 </html>

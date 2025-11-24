@@ -22,7 +22,7 @@ customElements.define(
           <ul>
             <li>
               <a target="_self" href="/" class="logo">
-                Salishan Keyboard
+                SKBD
               </a>
             </li>
 
