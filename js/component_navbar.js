@@ -63,11 +63,11 @@ customElements.define(
               <a target="_self" href="game.html">Glyph Arena</a>
             </li>
 
-			<li class="hidden">
+			<li>
               <nn-dropdown label="Developer Tools">
                 <a target="_self" href="changelog.html">Changelog</a>
-                <a target="_self" href="design.html">Design</a>
-                <a target="_self" href="design.html">About Salishan Keyboard</a>
+                <a data-hidden="true" target="_self" href="design.html">Design</a>
+                <a data-hidden="true" target="_self" href="about.html">About Salishan Keyboard</a>
               </nn-dropdown>
             </li>
             
