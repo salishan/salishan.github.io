@@ -41,7 +41,7 @@ export default [
 	{ label: '̵', description: 'combining short stroke overlay' },
 	{ label: '̴', description: 'combining tilde overlay' },
 	{ label: '̣', description: 'combining dot below' },
-	{ label: '̞', description: 'combining reversed breve below' },
+	{ label: '̞', description: 'Combining Down Tack Below' },
 	{ label: '̱', description: 'combining macron below' },
 
 	// =========================

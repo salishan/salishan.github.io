@@ -104,11 +104,11 @@ customElements.define(
 				tooltip: 'combining tilde overlay',
 				chars: ['m', 'M', '̴'],
 			}, // AB07
-			{ cat: 'bottom', tooltip: 'combining dot below', chars: [',', '<', '̣'] }, // AB08
+			{ cat: 'bottom', tooltip: 'Combining Down Tack Below', chars: [',', '<', '̞'] }, // AB08
 			{
 				cat: 'bottom',
-				tooltip: 'combining reversed breve below',
-				chars: ['.', '>', '̞'],
+				tooltip: 'combining dot below',
+				chars: ['.', '>', '̣'],
 			}, // AB09
 			{
 				cat: 'bottom',
