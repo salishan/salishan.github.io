@@ -197,6 +197,15 @@ nn-dropdown {
 				text-align: center;
 			}
 		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			margin: 0;
+		}
 	}
 }
 
@@ -234,9 +243,14 @@ salishan-keyboard {
 			box-shadow: #6b2a2a 4px 4px 1px;
 		}
 
-				&.special {
+		&.special {
 			background-color: #a040b8;
 			box-shadow: #532a6b 4px 4px 1px;
+		}
+
+		&.blank {
+			background-color: #3d3d3d;
+			box-shadow: #1b1b1b 4px 4px 1px;
 		}
 
 		&.wide-2 {
@@ -247,9 +261,24 @@ salishan-keyboard {
 			width: 240px;
 		}
 
+		&.special,
+		&.blank {
+			font-size: 1rem;
+			align-items: start;
+			.char {
+				flex-basis: 100%;
+				width: 100%;
+				padding-inline: 0.25rem;
+			}
+		}
+
+		&.spacebar {
+			width: 822px;
+		}
+
 		&:hover {
 			z-index: 1;
-			box-shadow: #707473 1px 1px 1px;
+			box-shadow: #313131 1px 1px 1px;
 			transform: translate(3px, 3px);
 		}
 
@@ -269,7 +298,7 @@ salishan-keyboard {
 	}
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1350px) {
 	salishan-keyboard {
 		.key {
 			&.empty-key,

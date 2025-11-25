@@ -24,10 +24,12 @@ customElements.define(
 			{ cat: 'top', tooltip: 'middle dot', chars: ['0', ')', '·'] }, // AE10 (·)
 			{ cat: 'top', tooltip: null, chars: ['-', '_'] }, // AE11
 			{ cat: 'top', tooltip: null, chars: ['=', '+'] }, // AE12
+			{ cat: 'blank', tooltip: null, chars: ['backspace'], size: 2 },
 
 			// =========================
 			// Top letter row
 			// =========================
+			{ cat: 'blank', tooltip: null, chars: ['tab'], size: 2 },
 			{ cat: 'rest', tooltip: 'letter theta', chars: ['q', 'Q', 'θ'] }, // AD01
 			{
 				cat: 'rest',
@@ -53,6 +55,7 @@ customElements.define(
 			// =========================
 			// Home row
 			// =========================
+			{ cat: 'blank', tooltip: null, chars: ['cap lock'], size: 2 },
 			{
 				cat: 'rest',
 				tooltip: 'letter capital A with stroke',
@@ -76,12 +79,12 @@ customElements.define(
 				tooltip: 'modifier apostrophe (glottalization)',
 				chars: ["'", '"', 'ʼ'],
 			}, // AC11
-			{ cat: 'special', tooltip: null, chars: ['enter'], size: 2 },
-			// { tooltip: null, chars: [] },
+			{ cat: 'blank', tooltip: null, chars: ['enter'], size: 2 },
 
 			// =========================
 			// Bottom row (combining marks)
 			// =========================
+			{ cat: 'special', tooltip: null, chars: ['left shift'], size: 2 },
 			{ cat: 'bottom', tooltip: 'acute accent', chars: ['z', 'Z', '́'] }, // AB01
 			{
 				cat: 'bottom',
@@ -112,7 +115,15 @@ customElements.define(
 				tooltip: 'combining macron below',
 				chars: ['/', '?', '̱'],
 			}, // AB10
-			{ cat: 'special', tooltip: null, chars: ['shift'], size: 3 },
+			{ cat: 'special', tooltip: null, chars: ['right shift'], size: 3 },
+
+			// special section
+			{ cat: 'blank', tooltip: null, chars: ['left ctrl'], size: 1 },
+			{ cat: 'blank', tooltip: null, chars: ['super'], size: 1 },
+			{ cat: 'blank', tooltip: null, chars: ['left alt'], size: 1 },
+			{ cat: 'blank spacebar', tooltip: null, chars: ['spacebar'], size: 1 },
+			{ cat: 'special', tooltip: null, chars: ['right alt'], size: 1 },
+			{ cat: 'blank', tooltip: null, chars: ['right ctrl'], size: 1 },
 		]
 
 		#generateKeys() {
