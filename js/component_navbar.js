@@ -55,8 +55,12 @@ customElements.define(
               <a target="_self" href="/">Home</a>
             </li>
 
+			<li>
+              <a target="_self" href="characters.html">Characters</a>
+            </li>
+
             <li>
-              <a target="_self" href="game.html">Game</a>
+              <a target="_self" href="game.html">Glyph Arena</a>
             </li>
 
 			<li class="hidden">

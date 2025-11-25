@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta
@@ -134,18 +134,60 @@
 			<section class="intro">
 				<nn-caja
 					max-width="1200px"
-					padding="1rem"
+					padding="3rem"
 				>
 					<h1>Salishan Keyboard Layout</h1>
 
 					<p>
 						Currently supporting Salishan and neighboring Indigenous languages
-						of the Pacific Northwest, featuring dead keys, combining
-						diacritics, and efficient input for glottalized, ejective, and
-						lateral consonants.
+						of the Pacific Northwest, featuring dead keys, combining diacritics,
+						and efficient input for glottalized, ejective, and lateral
+						consonants.
 					</p>
 
 					<salishan-keyboard> </salishan-keyboard>
+
+					<p>
+						This keyboard is an extension of the standard English US layout,
+						which is widely used and familiar. It provides a solid base because
+						physical keyboards with this configuration are common and serves as
+						a convenient gateway for typing in other languages. Special
+						characters can be accessed using
+						<nn-pill color="#2d7dc1">Super 3</nn-pill> /
+						<nn-pill color="#2d7dc1">Right Alt</nn-pill>.
+					</p>
+					<p>
+						The number row includes characters used in linguistic transcription,
+						such as
+						<nn-pill color="#2d7dc1">undertie</nn-pill> and
+						<nn-pill color="#2d7dc1">middle dot</nn-pill>, while the bottom row
+						contains all the dead keys. The keys in between include characters
+						that cannot be recreated using dead key combinations.
+					</p>
+
+					<div class="flex-row">
+						<nn-btn
+							color="#7b35c9"
+							download
+							link
+						>
+							<nn-icono class="linux"></nn-icono>&nbsp;Download for Linux
+						</nn-btn>
+						<nn-btn
+							color="#7b35c9"
+							download
+							link
+						>
+							<nn-icono class="apple"></nn-icono>&nbsp;Download for Mac
+						</nn-btn>
+						<nn-btn
+							color="#7b35c9"
+							download
+							link
+						>
+							<nn-icono class="windows"></nn-icono>&nbsp;Download for Windows
+						</nn-btn>
+					</div>
 				</nn-caja>
 			</section>
 		</main>
