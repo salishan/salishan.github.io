@@ -1,8 +1,12 @@
 - og preview banner
-- sitemap
+- video preview
 
-- mac package
-- windows package
+
 - design section
 - about the project section
-- video preview
+
+
+missing char:
+
+ł // l with stroke / prob was changed to l with belt or l with tilde
+ł

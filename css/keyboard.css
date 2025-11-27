@@ -1,0 +1,142 @@
+salishan-keyboard {
+	display: flex;
+	gap: 2rem;
+	flex-direction: column;
+
+	.keyboard {
+        width: 100%;
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		text-align: center;
+
+		.key {
+			width: 75px;
+			height: 75px;
+			display: flex;
+			font-size: 1.25rem;
+			flex-direction: column-reverse;
+			flex-wrap: wrap;
+			background-color: #49946e;
+			box-shadow: #36745f 4px 4px 1px;
+			transform: translate(0, 0);
+			border-radius: 5px;
+			transition: transform 100ms ease-in-out, box-shadow 100ms ease-in-out;
+
+			&.top {
+				background-color: #3f70b9;
+				box-shadow: #2a486b 4px 4px 1px;
+			}
+
+			&.bottom {
+				background-color: #c06262;
+				box-shadow: #6b2a2a 4px 4px 1px;
+			}
+
+			&.special {
+				background-color: #a040b8;
+				box-shadow: #532a6b 4px 4px 1px;
+			}
+
+			&.blank {
+				background-color: #3d3d3d;
+				box-shadow: #1b1b1b 4px 4px 1px;
+			}
+
+			&.wide-2 {
+				width: 158px;
+			}
+
+			&.wide-3 {
+				width: 240px;
+			}
+
+			&.special,
+			&.blank {
+				font-size: 1rem;
+				align-items: start;
+				.char {
+					flex-basis: 100%;
+					width: 100%;
+					padding-inline: 0.25rem;
+				}
+			}
+
+			&.spacebar {
+				width: 822px;
+			}
+
+			&:hover {
+				z-index: 1;
+				box-shadow: #313131 1px 1px 1px;
+				transform: translate(3px, 3px);
+			}
+
+			.char {
+				width: 50%;
+				height: 50%;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				color: #d4e7ff;
+
+				&:nth-child(3),
+				&:nth-child(4) {
+					color: #252740;
+				}
+			}
+
+			&.highlight {
+				outline: 2px solid #f7ffc8;
+			}
+		}
+	}
+
+	.regions {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+
+		.btn {
+			padding: 0.5rem;
+			font-size: 9pt;
+			text-align: center;
+			color: #222;
+			align-items: center;
+			justify-content: center;
+			font-family: inherit;
+			font-weight: 700;
+			letter-spacing: 1pt;
+			text-transform: uppercase;
+			transition: background-color 0.2s ease;
+			border-radius: 0;
+			border: 0;
+			min-height: 35px;
+			min-width: 35px;
+			background-color: rgb(66, 201, 160);
+			box-shadow: 0 3px 0 rgb(11, 167, 133);
+
+			&:hover {
+				background-color: rgb(109, 230, 193);
+                cursor: pointer;
+			}
+		}
+	}
+}
+
+@media (max-width: 1350px) {
+	salishan-keyboard {
+		.keyboard {
+			.key {
+				&.empty-key,
+				&.wide-2,
+				&.wide-3 {
+					display: none;
+				}
+			}
+		}
+	}
+}
