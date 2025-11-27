@@ -31,12 +31,14 @@
         background-color: #30303c;
         border-radius: 5px;
         padding: 0.5rem;
+        display: flex;
+        gap: .5rem;
 
-        &:has(nn-btn) {
+        &:has(.btn-link) {
           display: flex;
           align-items: center;
 
-          nn-btn {
+          .btn-link {
             flex-grow: 1;
           }
         }
@@ -98,7 +100,7 @@
       }
     }
 
-    nn-btn {
+    .btn-link {
       margin-inline: 0.5rem;
     }
   }

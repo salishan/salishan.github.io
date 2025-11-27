@@ -30,8 +30,8 @@ customElements.define(
 			<h1>Glyph Arena</h1>
   
       <nn-fila class="menu">
-        <nn-btn color="#3fe383ff" class="goto-game">Start Game</nn-btn>
-        <nn-btn color="#3fe383ff" class="goto-score">Check Scoreboard</nn-btn>
+        <button type="button" class="btn goto-game">Start Game</nn-btn>
+        <button type="button" class="btn goto-score">Check Scoreboard</nn-btn>
       </nn-fila>
     </section>
 
@@ -40,8 +40,8 @@ customElements.define(
       <h2>Submit your score</h2>
       <nn-fila class="menu">
         <input id="name" type="text" placeholder="name" autocomplete="off" autocorrect="off" spellcheck="false" />
-        <nn-btn color="#3fe383ff" id="submit-score">Submit Score</nn-btn>
-        <nn-btn color="#3fe383ff" class="goto-score">Dismiss Score</nn-btn>
+        <button type="button" class="btn" id="submit-score">Submit Score</nn-btn>
+        <button type="button" class="btn goto-score">Dismiss Score</nn-btn>
       </nn-fila>
     </section>
 
@@ -58,7 +58,7 @@ customElements.define(
         <div class="table-body" role="rowgroup"></div>
       </div>
       <div class="menu">
-        <nn-btn color="#3fe383ff" class="goto-home">Go Back Home</nn-btn>
+        <button type="button" class="btn goto-home">Go Back Home</nn-btn>
       </div>
     </section>
 
@@ -103,8 +103,8 @@ customElements.define(
       </div>
 
       <div class="menu">
-        <nn-btn color="#3fe383ff" class="new-game">Reset Challenge</nn-btn>
-        <nn-btn color="#3fe383ff" class="goto-home">Quit Challenge</nn-btn>
+        <button type="button" class="btn new-game">Reset Challenge</nn-btn>
+        <button type="button" class="btn goto-home">Quit Challenge</nn-btn>
       </div>
     </section>
   </main>
