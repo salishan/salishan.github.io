@@ -62,7 +62,11 @@ salishan-navbar {
 	color: var(--accent-color);
 	align-items: center;
 	gap: 0.25rem;
-  display: flex;
+	display: flex;
+
+	/* font-family: 'Pacifico', cursive;
+	font-weight: 400;
+	font-style: normal; */
 }
 
 .notifications {

@@ -22,7 +22,7 @@ customElements.define(
           <ul>
             <li>
               <a target="_self" href="/" class="logo">
-                SKBD <img src="./img/favicon_32x32.png" />
+                Salishan <img src="./img/favicon_32x32.png" />
               </a>
             </li>
 

@@ -1,0 +1,74 @@
+.salishan-home {
+	--foreground-color: #202826;
+
+	main {
+		gap: 0;
+	}
+
+	header {
+		background: rgb(55, 167, 231) url(../img/landing_cloud_top.webp) 0 100%
+			no-repeat;
+		background-size: 100%;
+
+		nn-caja {
+			padding-top: 5rem;
+			min-height: 830px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: start;
+			gap: 1rem;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 5rem;
+			color: rgb(34 95 110);
+			/* font-family: 'Pacifico', cursive;
+			font-weight: 400; */
+			font-style: normal;
+		}
+	}
+
+	section.intro {
+		background-color: #fff;
+		nn-caja {
+			display: flex;
+			gap: 2rem;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			p {
+				max-width: 790px;
+				text-align: center;
+			}
+		}
+	}
+
+	.tips {
+		background: #fff url(../img/landing_cloud_middle.webp) bottom left no-repeat;
+		min-height: 738px;
+		ul {
+			max-width: 790px;
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			margin: 0;
+		}
+
+		.blockquote {
+			width: 100%;
+			border: 1px solid var(--border-color);
+			border-radius: 10px;
+			padding: 1rem;
+			background-color: #1b2c2a;
+			transition: background-color ease-in-out 200ms;
+
+			&:hover {
+				background-color: #253b4096;
+			}
+		}
+	}
+}
