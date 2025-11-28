@@ -32,3 +32,9 @@ salishan-characters {
 		}
 	}
 }
+
+@media (max-width: 768px) {
+	salishan-characters {
+		text-align: center;
+	}
+}
