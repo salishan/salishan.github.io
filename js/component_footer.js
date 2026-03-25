@@ -10,10 +10,10 @@ customElements.define(
 		#data = {
 			template: `
     <footer class="page-footer">
-      <p>Built with <span class="heart"></span> by <a href="https://jmiguelrivas.github.io/" target="_BLANK">Miguel Rivas</a>.</p>
+      <p>Built with <span class="heart"></span> by <a href="https://pomboproibido.github.io/" target="_BLANK">Pombo</a>.</p>
       <ul>
         <li>
-          <a href="https://github.com/jmiguelrivas" target="_BLANK">github</a>
+          <a href="https://github.com/pomboproibido" target="_BLANK">github</a>
         </li>
         <li>
           <a href="https://www.youtube.com/@pombo_proibido" target="_BLANK">youtube</a>
